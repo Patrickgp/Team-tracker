@@ -79,6 +79,7 @@ function viewDepartments() {
   db.query(sql, (err, res) => {
     if (err) throw err;
     console.table("department", res);
+    options();
   });
 }
 
@@ -92,7 +93,7 @@ function viewRoles() {
 }
 
 function viewEmployees() {
-  const sql = `SELECT id, first_name, last_name, manager_id FROM employee INNER JOIN department ON employee.`;
+  const sql = `SELECT id, first_name, last_name, manager_id FROM employee`;
   db.query(sql, (err, res) => {
     if (err) throw err;
     console.table("All Employees", res);
