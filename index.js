@@ -74,6 +74,8 @@ function options() {
     });
 }
 
+// WHEN I choose to view all departments
+// THEN I am presented with a formatted table showing department names and department ids
 function viewDepartments() {
   const sql = `SELECT id, department_name FROM department`;
   db.query(sql, (err, res) => {
@@ -83,8 +85,10 @@ function viewDepartments() {
   });
 }
 
+// WHEN I choose to view all roles
+// THEN I am presented with the job title, role id, the department that role belongs to, and the salary for that role
 function viewRoles() {
-  const sql = `SELECT id, title FROM roles`;
+  const sql = `SELECT title, role.id, salary, department.department_name FROM role LEFT JOIN department ON role.department_id = department.id`;
   db.query(sql, (err, res) => {
     if (err) throw err;
     console.table("roles", res);
@@ -92,8 +96,10 @@ function viewRoles() {
   });
 }
 
+// WHEN I choose to view all employees
+// THEN I am presented with a formatted table showing employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
 function viewEmployees() {
-  const sql = `SELECT id, first_name, last_name, manager_id FROM employee`;
+  const sql = `SELECT employee.id, employee.first_name, employee.last_name, role.title AS role, CONCAT(manager.first_name,' ', manager.last_name) AS manager, department.department_name FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id LEFT JOIN employee manager ON employee.manager_id = manager.id`;
   db.query(sql, (err, res) => {
     if (err) throw err;
     console.table("All Employees", res);
@@ -101,12 +107,6 @@ function viewEmployees() {
   });
 }
 
-// WHEN I choose to view all departments
-// THEN I am presented with a formatted table showing department names and department ids
-// WHEN I choose to view all roles
-// THEN I am presented with the job title, role id, the department that role belongs to, and the salary for that role
-// WHEN I choose to view all employees
-// THEN I am presented with a formatted table showing employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
 // WHEN I choose to add a department
 // THEN I am prompted to enter the name of the department and that department is added to the database
 // WHEN I choose to add a role

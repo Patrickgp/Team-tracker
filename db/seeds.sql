@@ -8,7 +8,7 @@ VALUES
     (6, 'Human Resource'),
     (7, 'Customer Services');
 
-INSERT INTO roles (id, title, salary, department_id)
+INSERT INTO role (id, title, salary, department_id)
 VALUES
     (1, "CEO", 4600000, 1),
     (2, "CFO", 2000000, 1),
@@ -27,7 +27,7 @@ VALUES
     (15, "Customer Service Rep", 30000, 7),
     (16, "Help Desk Representative", 30000, 3);
 
-INSERT INTO employee (id, first_name, last_name, roles_id, manager_id)
+INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
 VALUES
     (1, "Dawn", "Keigh", 1, NULL), -- CEO
     (2, "Jack", "Pott", 2, 1), -- CFO
@@ -37,16 +37,16 @@ VALUES
     (6, "Patrick", "Poopathi", 6, 5), -- Full Stack Web Developer
     (7, "Ben", "Dover", 16, 5), -- Help Desk Representative
     (8, "Ima", "Hogg", 7, 4), -- Marketing & Sales Manager
-    (9, "Hugh", "Raye", 8, 7), -- Sales Representative
-    (10, "Horace", "Cope", 8, 7), -- Sales Representative
-    (11, "Helen", "Hywater", 8, 7), -- Sales Representative
-    (12, "Anita", "Mann", 9, 7), -- Marketer
-    (13, "Chester", "Minit", 9, 7), -- Marketer
+    (9, "Hugh", "Raye", 8, 8), -- Sales Representative
+    (10, "Horace", "Cope", 8, 8), -- Sales Representative
+    (11, "Helen", "Hywater", 8, 8), -- Sales Representative
+    (12, "Anita", "Mann", 9, 8), -- Marketer
+    (13, "Chester", "Minit", 9, 8), -- Marketer
     (14, "Jay", "Walker", 10, 4),  -- Lead Accountant
-    (15, "Arty", "Fischel", 11, 10), -- Expenses Clerk
-    (16, "Anna", "Mull", 12, 10), -- Payroll Clerk
+    (15, "Arty", "Fischel", 11, 14), -- Expenses Clerk
+    (16, "Anna", "Mull", 12, 4), -- Payroll Clerk
     (17, "Bennie", "Factor", 13, 4), -- Benefits Coordinator
-    (18, "Crystal", "Ball", 14, 7), -- Customer Service Supervisor
+    (18, "Crystal", "Ball", 14, 8), -- Customer Service Supervisor
     (19, "Dick", "Tate", 15, 14), -- Customer Service Representative
     (20, "Jim", "Nasium", 15, 14), -- Customer Service Representative
     (21, "Joe", "King", 15, 14), -- Customer Service Representative
