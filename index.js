@@ -42,39 +42,74 @@ function options() {
     ])
     .then(function (answer) {
       switch (answer.optPrompts) {
-        // Run viewDepartments() if selected
+        // Run viewDepartments() if selected DONE
         case "View all Departments.":
           deptObj.viewDepartments();
           break;
 
-        // Run viewRoles() if selected
+        // Run viewRoles() if selected DONE
         case "View all Roles.":
           rolesObj.viewRoles();
           break;
 
-        // Run viewEmployees() if selected
+        // Run viewEmployees() if selected DONE
         case "View all Employees.":
           empObj.viewEmployees();
           break;
 
-        // Run addDept() if selected
+        // Run addDept() if selected DONE
         case "Add a Department.":
           deptObj.addDept();
           break;
 
-        // Run addRole() if selected
+        // Run addRole() if selected DONE
         case "Add a Role.":
           rolesObj.addRole();
           break;
 
-        // Run addEmployee() if selected
+        // Run addEmployee() if selected DONE
         case "Add an Employee.":
           empObj.addEmployee();
           break;
 
-        // Run updateEmp() if selected
+        // Run updateEmp() if selected DONE
         case "Update an Employee Role.":
           empObj.updateEmp();
+          break;
+
+        // Run updateEmpMan if selected
+        case "Update an Employee's Manager.":
+          empObj.updateEmpMan();
+          break;
+
+        // Run empByMan() if selected
+        case "View Employees by Manager.":
+          empObj.empByMan();
+          break;
+
+        // Run empByDept() if selected
+        case "View Employees by Department.":
+          empObj.empByDept();
+          break;
+
+        // Run deleteDept() if selected
+        case "Delete a Department":
+          deptObj.deleteDept();
+          break;
+
+        // Run deleteRole() if selected
+        case "Delete a Role":
+          rolesObj.deleteRole();
+          break;
+
+        // Run deleteEmp() if selected
+        case "Delete an Employee":
+          empObj.deleteEmp();
+          break;
+
+        // Run viewTotalSalaries() if selected
+        case "View Total Salaries by Department.":
+          deptObj.viewTotalSalaries();
           break;
 
         // Run exit() if selected
