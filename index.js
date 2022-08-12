@@ -109,9 +109,145 @@ function viewEmployees() {
 
 // WHEN I choose to add a department
 // THEN I am prompted to enter the name of the department and that department is added to the database
+function addDept() {
+  const sql = `SELECT * FROM department`;
+  db.query(sql, (err, res) => {
+    if (err) throw err;
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "departmentId",
+          message: "Enter ID for new Department: ",
+        },
+        {
+          type: "input",
+          name: "departmentName",
+          message: "Enter new Department Name: ",
+        },
+      ])
+      .then((answers) => {
+        const sql2 = `INSERT INTO department VALUES (?,?)`;
+        db.query(
+          sql2,
+          [answers.departmentId, answers.departmentName],
+          (err) => {
+            if (err) throw err;
+            console.log(
+              `${answers.departmentName} has been added as a new department`
+            );
+            options();
+          }
+        );
+      });
+  });
+}
+
 // WHEN I choose to add a role
 // THEN I am prompted to enter the name, salary, and department for the role and that role is added to the database
+function addRole() {
+  const sql = `SELECT * FROM role`;
+  db.query(sql, (err, res) => {
+    if (err) throw err;
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "roleId",
+          message: "Enter ID for new Role: ",
+        },
+        {
+          type: "input",
+          name: "roleTitle",
+          message: "Enter new role's Title: ",
+        },
+        {
+          type: "input",
+          name: "roleSalary",
+          message: "Enter new role's salary: ",
+        },
+        {
+          type: "input",
+          name: "roleDept",
+          message: "Enter Dept ID for new role: ",
+        },
+      ])
+      .then((answers) => {
+        const sql2 = `INSERT INTO role VALUES (?,?,?,?)`;
+        db.query(
+          sql2,
+          [
+            answers.roleId,
+            answers.roleTitle,
+            answers.roleSalary,
+            answers.roleDept,
+          ],
+          (err) => {
+            if (err) throw err;
+            console.log(`${answers.roleSalary} has been added as a new role.`);
+            options();
+          }
+        );
+      });
+  });
+}
+
 // WHEN I choose to add an employee
 // THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
+function addEmployee() {
+  const sql = `SELECT * FROM employee`;
+  db.query(sql, (err, res) => {
+    if (err) throw err;
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "employeeId",
+          message: "Enter ID for new employee: ",
+        },
+        {
+          type: "input",
+          name: "employeeFirstName",
+          message: "Enter new employee's first name: ",
+        },
+        {
+          type: "input",
+          name: "employeeLastName",
+          message: "Enter new employee's last name: ",
+        },
+        {
+          type: "input",
+          name: "employeeRoleID",
+          message: "Enter new employee's role ID#: ",
+        },
+        {
+          type: "input",
+          name: "employeeManager",
+          message: "Enter new employee's direct Manager: ",
+        },
+      ])
+      .then((answers) => {
+        const sql2 = `INSERT INTO employee VALUES (?,?,?,?,?)`;
+        db.query(
+          sql2,
+          [
+            answers.employeeId,
+            answers.employeeFirstName,
+            answers.employeeLastName,
+            answers.employeeRoleID,
+            answers.employeeManager,
+          ],
+          (err) => {
+            if (err) throw err;
+            console.log(
+              `${answers.employeeFirstName} ${answers.employeeLastName} has been added as a new employee.`
+            );
+            options();
+          }
+        );
+      });
+  });
+}
+
 // WHEN I choose to update an employee role
 // THEN I am prompted to select an employee to update and their new role and this information is updated in the database
