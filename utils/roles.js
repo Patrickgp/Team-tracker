@@ -66,5 +66,7 @@ function addRole() {
   });
 }
 
+function deleteRole() {}
+
 exports.viewRoles = viewRoles;
 exports.addRole = addRole;

@@ -53,5 +53,9 @@ function addDept() {
   });
 }
 
+function deleteDept() {}
+
+function viewTotalSalaries() {}
+
 exports.viewDepartments = viewDepartments;
 exports.addDept = addDept;

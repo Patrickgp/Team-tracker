@@ -150,6 +150,91 @@ function updateEmp() {
   });
 }
 
+// WHEN I choose to update an employee's manager
+// THEN I am prompted to select an employee to update and their new manager is updated in the database
+function updateEmpMan() {
+  const sql = `SELECT * FROM employee`;
+  db.query(sql, (err, res) => {
+    const employees = res.map(function (element) {
+      return {
+        name: `${element.first_name} ${element.last_name}`,
+        value: element.id,
+      };
+    });
+
+    inquirer
+      .prompt([
+        {
+          type: "list",
+          name: "employeeId",
+          message: "Which employee is receiving a new manager?",
+          choices: employees,
+        },
+      ])
+      .then((input1) => {
+        const sql2 = `SELECT * FROM employee`;
+        db.query(sql2, (err, data) => {
+          const mgr = data.map(function (element) {
+            return {
+              name: `${element.first_name} ${element.last_name}`,
+              value: element.id,
+            };
+          });
+
+          inquirer
+            .prompt([
+              {
+                type: "list",
+                name: "mgrId",
+                message: "Who is their new Manager ",
+                choices: mgr,
+              },
+            ])
+            .then((input2) => {
+              const sql3 = `UPDATE employee SET employee.manager_id = ? WHERE employee.id = ?`;
+              db.query(
+                sql3,
+                [input2.mgrId, input1.employeeId],
+                function (err, res) {
+                  var tempManager;
+                  for (var i = 0; i < mgr.length; i++) {
+                    if (mgr[i].value == input2.mgrId) {
+                      tempManager = mgr[i].name;
+                    }
+                  }
+                  var tempName;
+                  for (var x = 0; x < employees.length; x++) {
+                    if (employees[x].value == input1.employeeId) {
+                      tempName = employees[x].name;
+                    }
+                  }
+                  if (res.changedRows === 1) {
+                    console.log(
+                      `Updated manager of ${tempName} to ${tempManager} successfully.`
+                    );
+                  } else {
+                    console.log(
+                      `Could not change ${tempName}'s current manager. Try again.`
+                    );
+                  }
+                  optObj.options();
+                }
+              );
+            });
+        });
+      });
+  });
+}
+
+// WHEN I choose to show employees organized by their managers
+// THEN I am prompted to select a manager to display their teams
+function empByMan() {}
+
+function empByDept() {}
+
+function deleteEmp() {}
+
 exports.updateEmp = updateEmp;
 exports.addEmployee = addEmployee;
 exports.viewEmployees = viewEmployees;
+exports.updateEmpMan = updateEmpMan;

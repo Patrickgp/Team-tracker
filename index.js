@@ -78,7 +78,7 @@ function options() {
           break;
 
         // Run updateEmpMan if selected
-        case "Update an Employee's Manager.":
+        case "Update Employee's Manager.":
           empObj.updateEmpMan();
           break;
 
