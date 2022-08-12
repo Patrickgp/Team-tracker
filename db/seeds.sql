@@ -42,12 +42,12 @@ VALUES
     (11, "Helen", "Hywater", 8, 8), -- Sales Representative
     (12, "Anita", "Mann", 9, 8), -- Marketer
     (13, "Chester", "Minit", 9, 8), -- Marketer
-    (14, "Jay", "Walker", 10, 4),  -- Lead Accountant
-    (15, "Arty", "Fischel", 11, 14), -- Expenses Clerk
+    (14, "Jay", "Walker", 10, 2),  -- Accountant
+    (15, "Arty", "Fischel", 11, 2), -- Expenses Clerk
     (16, "Anna", "Mull", 12, 4), -- Payroll Clerk
     (17, "Bennie", "Factor", 13, 4), -- Benefits Coordinator
     (18, "Crystal", "Ball", 14, 8), -- Customer Service Supervisor
-    (19, "Dick", "Tate", 15, 14), -- Customer Service Representative
-    (20, "Jim", "Nasium", 15, 14), -- Customer Service Representative
-    (21, "Joe", "King", 15, 14), -- Customer Service Representative
-    (22, "Dinah", "Mite", 15, 14); -- Customer Service Representative
+    (19, "Dick", "Tate", 15, 18), -- Customer Service Representative
+    (20, "Jim", "Nasium", 15, 18), -- Customer Service Representative
+    (21, "Joe", "King", 15, 18), -- Customer Service Representative
+    (22, "Dinah", "Mite", 15, 18); -- Customer Service Representative

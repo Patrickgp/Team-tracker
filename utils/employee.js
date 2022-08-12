@@ -228,7 +228,36 @@ function updateEmpMan() {
 
 // WHEN I choose to show employees organized by their managers
 // THEN I am prompted to select a manager to display their teams
-function empByMan() {}
+function empByMan() {
+  const sql = `SELECT * FROM employee WHERE employee.id IN (null, 1, 2, 3, 4, 5, 8, 18)`;
+  db.query(sql, (err, res) => {
+    if (err) throw err;
+    const managers = res.map(function (element) {
+      return {
+        name: `${element.first_name} ${element.last_name}`,
+        value: element.id,
+      };
+    });
+    inquirer
+      .prompt([
+        {
+          type: "list",
+          name: "empByMgr",
+          message: "Select a manager to view their employees: ",
+          choices: managers,
+        },
+      ])
+      .then((response) => {
+        console.log(response.empByMgr);
+        let sql2 = `SELECT employee.id, employee.first_name, employee.last_name, title AS role, CONCAT(manager.first_name, ' ', manager.last_name) AS manager, department.department_name AS department FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on department.id = role.department_id LEFT JOIN employee manager on employee.manager_id = manager.id WHERE employee.manager_id = ?`;
+        db.query(sql2, [response.empByMgr], (err, data) => {
+          if (err) throw err;
+          console.table(data);
+          optObj.options();
+        });
+      });
+  });
+}
 
 function empByDept() {}
 
@@ -238,3 +267,4 @@ exports.updateEmp = updateEmp;
 exports.addEmployee = addEmployee;
 exports.viewEmployees = viewEmployees;
 exports.updateEmpMan = updateEmpMan;
+exports.empByMan = empByMan;
