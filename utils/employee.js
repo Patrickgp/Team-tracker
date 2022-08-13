@@ -259,7 +259,32 @@ function empByMan() {
   });
 }
 
-function empByDept() {}
+function empByDept() {
+  const sql = `SELECT  * FROM department`;
+  db.query(sql, (err, response) => {
+    if (err) throw err;
+    const departments = response.map((element) => {
+      return { name: `${element.department_name}` };
+    });
+    inquirer
+      .prompt([
+        {
+          type: "list",
+          name: "dept",
+          message: "Select a department to view employees",
+          choices: departments,
+        },
+      ])
+      .then((answer) => {
+        const sql2 = `SELECT * FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id WHERE ?`;
+        db.query(sql2, [{ department_name: answer.dept }], function (err, res) {
+          if (err) throw err;
+          console.table(res);
+          optObj.options();
+        });
+      });
+  });
+}
 
 function deleteEmp() {}
 
@@ -268,3 +293,4 @@ exports.addEmployee = addEmployee;
 exports.viewEmployees = viewEmployees;
 exports.updateEmpMan = updateEmpMan;
 exports.empByMan = empByMan;
+exports.empByDept = empByDept;
