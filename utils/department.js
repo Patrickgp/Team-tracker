@@ -1,8 +1,6 @@
 // Dependencies
 const inquirer = require("inquirer");
 const db = require("../db/connection");
-const rolesObj = require("./roles");
-const empObj = require("./employee");
 const optObj = require("../index");
 const cTable = require("console.table");
 
@@ -86,6 +84,7 @@ function deleteDept() {
 
 function viewTotalSalaries() {}
 
+// My functions I am exporting to index.js
 exports.viewDepartments = viewDepartments;
 exports.addDept = addDept;
 exports.deleteDept = deleteDept;

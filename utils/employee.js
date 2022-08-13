@@ -317,6 +317,7 @@ function deleteEmp() {
   });
 }
 
+// My functions I am exporting to index.js
 exports.updateEmp = updateEmp;
 exports.addEmployee = addEmployee;
 exports.viewEmployees = viewEmployees;

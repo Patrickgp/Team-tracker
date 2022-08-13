@@ -1,3 +1,5 @@
+-- This will initiate my seed data that will fill my tables when I source seeds.sql
+
 INSERT INTO department (id, department_name)
 VALUES
     (1, 'Management'),

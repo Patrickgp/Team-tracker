@@ -42,37 +42,37 @@ function options() {
     ])
     .then(function (answer) {
       switch (answer.optPrompts) {
-        // Run viewDepartments() if selected DONE
+        // Run viewDepartments() if selected
         case "View all Departments.":
           deptObj.viewDepartments();
           break;
 
-        // Run viewRoles() if selected DONE
+        // Run viewRoles() if selected
         case "View all Roles.":
           rolesObj.viewRoles();
           break;
 
-        // Run viewEmployees() if selected DONE
+        // Run viewEmployees() if selected
         case "View all Employees.":
           empObj.viewEmployees();
           break;
 
-        // Run addDept() if selected DONE
+        // Run addDept() if selected
         case "Add a Department.":
           deptObj.addDept();
           break;
 
-        // Run addRole() if selected DONE
+        // Run addRole() if selected
         case "Add a Role.":
           rolesObj.addRole();
           break;
 
-        // Run addEmployee() if selected DONE
+        // Run addEmployee() if selected
         case "Add an Employee.":
           empObj.addEmployee();
           break;
 
-        // Run updateEmp() if selected DONE
+        // Run updateEmp() if selected
         case "Update an Employee Role.":
           empObj.updateEmp();
           break;
@@ -119,5 +119,5 @@ function options() {
       }
     });
 }
-
+// My functions I am exporting to the js files in my utils folder
 exports.options = options;

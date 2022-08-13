@@ -1,3 +1,6 @@
+-- This will create my initial tables and will drop and create again every time
+-- I source schema.sql
+
 DROP TABLE IF EXISTS department;
 DROP TABLE IF EXISTS role;
 DROP TABLE IF EXISTS employee;
@@ -23,4 +26,5 @@ CREATE TABLE employee (
     manager_id INTEGER,
     CONSTRAINT fk_e2e FOREIGN KEY (manager_id) REFERENCES employee(id) ON DELETE SET NULL
     -- FOREIGN KEY (role_id) REFERENCES role(id)
+    -- The foreign key ^ above ^ prevented me from deleting roles
 );

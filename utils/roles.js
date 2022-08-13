@@ -1,8 +1,6 @@
 // Dependencies
 const inquirer = require("inquirer");
 const db = require("../db/connection");
-const deptObj = require("./department");
-const empObj = require("./employee");
 const optObj = require("../index");
 const cTable = require("console.table");
 
@@ -94,6 +92,7 @@ function deleteRole() {
   });
 }
 
+// My functions I am exporting to index.js
 exports.viewRoles = viewRoles;
 exports.addRole = addRole;
 exports.deleteRole = deleteRole;
