@@ -53,9 +53,39 @@ function addDept() {
   });
 }
 
-function deleteDept() {}
+// WHEN I choose to delete a department
+// THEN I am prompted to select a department and that department is deleted from the database
+function deleteDept() {
+  let sql = `SELECT * FROM department`;
+  db.query(sql, (err, res) => {
+    if (err) throw err;
+    inquirer
+      .prompt([
+        {
+          type: "list",
+          name: "terminatorDepartment",
+          message: "Select department to delete from the database.",
+          choices: res.map((department) => {
+            return {
+              name: `${department.department_name}`,
+              value: department.id,
+            };
+          }),
+        },
+      ])
+      .then((answer) => {
+        let sql2 = `DELETE FROM department WHERE ?`;
+        db.query(sql2, [{ id: answer.terminatorDepartment }], (err) => {
+          if (err) throw err;
+          console.log(`Department has been deleted.`);
+          optObj.options();
+        });
+      });
+  });
+}
 
 function viewTotalSalaries() {}
 
 exports.viewDepartments = viewDepartments;
 exports.addDept = addDept;
+exports.deleteDept = deleteDept;

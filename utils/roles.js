@@ -66,6 +66,8 @@ function addRole() {
   });
 }
 
+// WHEN I choose to delete a role
+// THEN I am prompted to select a role and that selected role is deleted
 function deleteRole() {
   let sql = `SELECT * FROM role`;
   db.query(sql, (err, res) => {
@@ -86,6 +88,7 @@ function deleteRole() {
         db.query(sql2, [{ id: answer.terminatorRole }], (err) => {
           if (err) throw err;
           console.log(`Role has been deleted.`);
+          optObj.options();
         });
       });
   });
