@@ -35,3 +35,22 @@ Email me: patrickgp1992
 # Test
 N/A
 
+# Screenshots
+
+Initiating and sourcing mysql database.
+<img width="1512" alt="Screen Shot 2022-08-13 at 7 27 30 PM" src="https://user-images.githubusercontent.com/86730331/184516597-6fcf00f3-3da9-4abc-aceb-1c5375177200.png">
+
+My Inquirer prompts of all mandatory and bonus functionality
+<img width="1512" alt="Screen Shot 2022-08-13 at 7 28 03 PM" src="https://user-images.githubusercontent.com/86730331/184516603-7fe73c5d-267f-4b8b-bd93-7ba38cb977f2.png">
+
+View all roles and view all employees
+<img width="1512" alt="Screen Shot 2022-08-13 at 7 28 27 PM" src="https://user-images.githubusercontent.com/86730331/184516632-38f05fa7-2cc2-416c-b0fa-0436e19b2fef.png">
+
+
+Adding an employee as COO.
+<img width="1512" alt="Screen Shot 2022-08-13 at 7 28 55 PM" src="https://user-images.githubusercontent.com/86730331/184516634-e8764d2e-77d6-4856-8540-976f2ae23709.png">
+
+Viewing total salaries of management department increase with added employee and decrease when employee is deleted.
+<img width="1512" alt="Screen Shot 2022-08-13 at 7 29 23 PM" src="https://user-images.githubusercontent.com/86730331/184516654-b641ee9d-7335-4796-84c5-436714a87afc.png">
+
+
