@@ -1,8 +1,6 @@
 // Dependencies
 const inquirer = require("inquirer");
 const db = require("../db/connection");
-const rolesObj = require("./roles");
-const deptObj = require("./department");
 const optObj = require("../index");
 const cTable = require("console.table");
 
@@ -259,6 +257,8 @@ function empByMan() {
   });
 }
 
+// WHEN I choose to show employees organized by their departments
+// THEN I am prompted to select a department to display their teams
 function empByDept() {
   const sql = `SELECT  * FROM department`;
   db.query(sql, (err, response) => {
@@ -286,7 +286,36 @@ function empByDept() {
   });
 }
 
-function deleteEmp() {}
+// WHEN I choose to delete an employee from the database
+// THEN I am prompted to select an employee to delete them
+function deleteEmp() {
+  const sql = `SELECT * FROM employee`;
+  db.query(sql, (err, res) => {
+    if (err) throw err;
+    inquirer
+      .prompt([
+        {
+          type: "list",
+          name: "terminator",
+          message: "Select employee to remove from database",
+          choices: res.map((employee) => {
+            return {
+              name: `${employee.first_name} ${employee.last_name}`,
+              value: employee.id,
+            };
+          }),
+        },
+      ])
+      .then((answer) => {
+        const sql2 = `DELETE FROM employee WHERE ?`;
+        db.query(sql2, [{ id: answer.terminator }], (err) => {
+          if (err) throw err;
+          console.log("Employee has been removed from database");
+          optObj.options();
+        });
+      });
+  });
+}
 
 exports.updateEmp = updateEmp;
 exports.addEmployee = addEmployee;
@@ -294,3 +323,4 @@ exports.viewEmployees = viewEmployees;
 exports.updateEmpMan = updateEmpMan;
 exports.empByMan = empByMan;
 exports.empByDept = empByDept;
+exports.deleteEmp = deleteEmp;
