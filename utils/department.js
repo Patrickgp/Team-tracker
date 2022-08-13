@@ -82,9 +82,41 @@ function deleteDept() {
   });
 }
 
-function viewTotalSalaries() {}
+// WHEN I choose to view total salaries of each department
+// THEN I am prompted to select a department and that department's total salaries are displayed
+function viewTotalSalaries() {
+  const sql = `SELECT  * FROM department`;
+  db.query(sql, (err, response) => {
+    if (err) throw err;
+    const departments = response.map((department) => {
+      return { name: `${department.department_name}`, value: department.id };
+    });
+    inquirer
+      .prompt([
+        {
+          type: "list",
+          name: "deptSal",
+          message: "Select a department to view total salaries",
+          choices: departments,
+        },
+      ])
+      .then((answer) => {
+        const sql2 = `SELECT SUM(salary) FROM role LEFT JOIN employee ON role_id = role.id WHERE ?`;
+        db.query(
+          sql2,
+          [{ department_id: answer.deptSal }],
+          function (err, res) {
+            if (err) throw err;
+            console.table(res);
+            optObj.options();
+          }
+        );
+      });
+  });
+}
 
 // My functions I am exporting to index.js
 exports.viewDepartments = viewDepartments;
 exports.addDept = addDept;
 exports.deleteDept = deleteDept;
+exports.viewTotalSalaries = viewTotalSalaries;
