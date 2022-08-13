@@ -21,6 +21,6 @@ CREATE TABLE employee (
     last_name VARCHAR(30) NOT NULL,
     role_id INTEGER NOT NULL,
     manager_id INTEGER,
-    CONSTRAINT fk_e2e FOREIGN KEY (manager_id) REFERENCES employee(id) ON DELETE SET NULL,
-    FOREIGN KEY (role_id) REFERENCES role(id)
+    CONSTRAINT fk_e2e FOREIGN KEY (manager_id) REFERENCES employee(id) ON DELETE SET NULL
+    -- FOREIGN KEY (role_id) REFERENCES role(id)
 );

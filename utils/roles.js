@@ -66,7 +66,31 @@ function addRole() {
   });
 }
 
-function deleteRole() {}
+function deleteRole() {
+  let sql = `SELECT * FROM role`;
+  db.query(sql, (err, res) => {
+    if (err) throw err;
+    inquirer
+      .prompt([
+        {
+          type: "list",
+          name: "terminatorRole",
+          message: "Select role to delete from the database.",
+          choices: res.map((role) => {
+            return { name: `${role.title}`, value: role.id };
+          }),
+        },
+      ])
+      .then((answer) => {
+        let sql2 = `DELETE FROM role WHERE ?`;
+        db.query(sql2, [{ id: answer.terminatorRole }], (err) => {
+          if (err) throw err;
+          console.log(`Role has been deleted.`);
+        });
+      });
+  });
+}
 
 exports.viewRoles = viewRoles;
 exports.addRole = addRole;
+exports.deleteRole = deleteRole;
