@@ -2,7 +2,8 @@
 
 ##  
 
-# Video Walkthrough Link: https://drive.google.com/file/d/1k1O3hMAuyrkFifdudNz62cQpxeEjLJr2/view
+# Video Walkthrough Link: 
+https://drive.google.com/file/d/1k1O3hMAuyrkFifdudNz62cQpxeEjLJr2/view
 
 # Description
 This command-line application accepts user input and would allow one to view and manage a business' departments, roles, and employees. They can view, add, update, and delete departments, roles, and employees as well as view total salaries by department.
